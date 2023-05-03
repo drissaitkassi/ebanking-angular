@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CustomerService} from "../services/customer.service";
+import {Customer} from "../Model/Customer";
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private customerService: CustomerService) { }
+   customers !:Customer[];
+  private errorMessage!: string
   ngOnInit(): void {
-  }
 
+    this.handelLoadingCustomers()
+  }
+  handelLoadingCustomers(){
+    this.customerService.LoadCustomers().subscribe({
+      next:(data)=>{
+        this.customers=data;
+      },
+      error:(err)=>{
+        console.log(" failed to load cusomers")
+      }
+    })
+  }
 }
