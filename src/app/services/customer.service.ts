@@ -14,4 +14,8 @@ export class CustomerService {
   LoadCustomers():Observable<Customer[]>{
    return  this.http.get<Customer[]>("http://localhost:8085/customers")
   }
+
+  addCustomer(customer :Customer):Observable<Customer>{
+    return  this.http.post<Customer>("http://localhost:8085/customers",customer)
+  }
 }
