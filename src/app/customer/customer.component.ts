@@ -39,20 +39,17 @@ export class CustomerComponent implements OnInit {
   handelSearchCustomerByName(){
 
     let kwObj=this.searchCustomerForm.value
+    if (kwObj['keyword'] == null) this.handelLoadingCustomers()
 
-      console.log("im executed also ...")
       this.customerService.searchCustomers(kwObj['keyword']).subscribe({
         next:(data)=>{
-          if (kwObj['keyword'] == null) {
-            console.log("keyword is null")
-            this.handelLoadingCustomers()
-          }else {this.customers=data;
-          }
+          this.customers=data;
+
         },
         error:(err)=>{
-          console.log(err)
-        }
+          this.handelLoadingCustomers()        }
       })
+
 
 
 
