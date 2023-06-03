@@ -1,18 +1,67 @@
-<div class="d-flex justify-content-around  mt-5">
-  <div class="row">
+<div class="d-flex justify-content-evenly  mt-5">
+
+
+  <div class="row col-9">
+
+<!--    account section-->
     <div class="col-sm-6 mb-2">
       <div class="card">
         <div class="card-header text-center">
           <h5 class="card-title">Accounts</h5>
         </div>
         <div class="card-body ">
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+<!--          {{searchAccountForm.value | json}}-->
+          <form [formGroup]="searchAccountForm"  (ngSubmit)="handelSearchAccount()"  >
+              <div class="form-group  d-flex flex-row justify-content-evenly align-content-between  ">
+                <label class="form-label align-self-end me-1"  >
+                  Account
+                </label>
+                <input type="text" placeholder="enter account id" formControlName="accountID" class="form-control me-1" >
+                <button type="submit" class="btn btn-success ">search</button>
+              </div>
+
+          </form>
+<!--          balance id section-->
+          <div class="balance-id mt-2 mb-2">
+            <label>Account ID :</label>
+            <label><Strong>{{accountDetails.accId}} </Strong></label>
+            <br>
+            <label>Account Balance :</label>
+            <label><Strong>{{accountDetails.balance | number : "1.2-2"}} </Strong></label>
+          </div>
+
+<!--         account operation section-->
+          <div class="account-operations">
+            <table class="table">
+              <thead>
+<!--                <th>ID</th>-->
+                <th>DATE</th>
+                <th>AMOUNT</th>
+                <th>DESCRIPTION</th>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let op of accountOperationDTOList">
+<!--                    <td>{{op.accountId}}</td>-->
+                    <td>{{op.operationDate | date:"dd-mm-yy"}}</td>
+                    <td>{{op.amount | number : "1.2-2"}}</td>
+                    <td>{{op.description}}</td>
+                  </tr>
+              </tbody>
+            </table>
+            <ul class="nav nav-pills">
+              <li *ngFor="let page of [].constructor(accountDetails.totalPgaes );let i=index ">
+                <a (click)="setCurrentPage(i)"  [ngClass]="i==currentPage? ' btn btn-info' : 'btn btn-outline-info'" class="ms-1"> {{i}}</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+
+
+
+<!--    opertaion section-->
+
 
     <div class="col-sm-6 mb-2">
       <div class="card ">
