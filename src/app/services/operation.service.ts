@@ -20,5 +20,16 @@ export class OperationService {
   public saveCreditOperation(accountOperation: AccountOperation) : Observable<AccountOperation>{
     return  this.http.post<AccountOperation>("http://localhost:8085/api/v1/operations/credit",accountOperation);
 
+
   }
+
+  public saveDebitOperation(accountOperation: AccountOperation) : Observable<AccountOperation>{
+    return  this.http.post<AccountOperation>("http://localhost:8085/api/v1/operations/debit",accountOperation);
+}
+
+  public saveTransferOperation(accountOperation: AccountOperation) : Observable<AccountOperation>{
+    return  this.http.post<AccountOperation>("http://localhost:8085/api/v1/operations/transfert",accountOperation);
+  }
+
+
 }

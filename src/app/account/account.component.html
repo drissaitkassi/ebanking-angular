@@ -91,7 +91,6 @@
           </div>
 <!--      formulaire de versement-->
 
-        {{versementForm.value | json}}
         <form class="d-flex justify-content-evenly" [formGroup]="versementForm" *ngIf="selectedForm === 'versementForm'" (submit)="handelVersment()">
           <div class="form-group  d-flex mt-2">
             <label >
@@ -104,61 +103,50 @@
             <button class="btn btn-success" type="submit">Save</button>
 
           </div>
-<!--          <div class="form-group">-->
-<!--            <label class="mb-2 mt-4">-->
-<!--              Numéro de Compte-->
-<!--            </label>-->
-<!--            <input type="text" class="form-control" formControlName="numCompte" value="{{accountDetails.accId}}" hidden>-->
-
-<!--          </div>-->
 
         </form>
 
 
+          <!--                formulaire de retrait-->
 
 
-<!--                formulaire de retrait-->
-      <div [formGroup]="retraitForm" *ngIf="selectedForm === 'retraitForm'">
-        <form class="d-flex justify-content-evenly">
-          <div class="form-group ">
-            <label class="mb-2 mt-4">
+        <form class="d-flex justify-content-evenly" [formGroup]="retraitForm" *ngIf="selectedForm === 'retraitForm'" (submit)="handelRetrait()">
+          <div class="form-group  d-flex mt-2">
+            <label >
               Montant Retrait
             </label>
-            <input type="text" class="form-control" name="mntRetrait" placeholder="Entez votre Montant ">
+            <input type="text" class="form-control" formControlName ="amount" placeholder="Entez votre Montant ">
+            <input type="text" class="form-control" formControlName ="description" placeholder="Entez votre description ">
+            <input type="text" class="form-control" formControlName="accountId"  hidden >
+
+            <button class="btn btn-success" type="submit">Save</button>
+
           </div>
-          <div class="form-group">
-            <label class="mb-2 mt-4">
-              Numéro de Compte
-            </label>
-            <input type="text" class="form-control" name="numCompte" placeholder="Entez votre Compte ">
-          </div>
+
         </form>
-      </div>
+
+
 
 
           <!--      formulaire de virement-->
-      <div [formGroup]="virementForm" *ngIf="selectedForm === 'virementForm'">
-        <form class="d-flex justify-content-evenly">
-          <div class="form-group ">
-            <label class="mb-2 mt-4">
-              Montant Virement
-            </label>
-            <input type="text" class="form-control" name="mntVirement" placeholder="Entez votre Montant ">
-          </div>
-          <div class="form-group">
-            <label class="mb-2 mt-4">
-              Numéro de Compte débit
-            </label>
-            <input type="text" class="form-control" name="numCompteDebit" placeholder="Entez votre Compte ">
-          </div>
-          <div class="form-group">
-            <label class="mb-2 mt-4">
-              Numéro de Compte crédit
-            </label>
-            <input type="text" class="form-control" name="numCompteCredit" placeholder="Entez votre Compte ">
-          </div>
-        </form>
-      </div>
+          <form class="d-flex justify-content-evenly" [formGroup]="virementForm" *ngIf="selectedForm === 'virementForm'" (submit)="handelVirement()">
+            <div class="form-group  d-flex mt-2">
+              <label >
+                Montant Retrait
+              </label>
+              <input type="text" class="form-control" formControlName ="amount" placeholder="Entez votre Montant ">
+              <input type="text" class="form-control" formControlName ="description" placeholder="Entez votre description ">
+              <input type="text" class="form-control" formControlName ="destinationAccountId" placeholder="Compte Destinataire ">
+              <input type="text" class="form-control" formControlName="accountId"  hidden >
+
+              <button class="btn btn-success" type="submit">Save</button>
+
+            </div>
+
+          </form>
+
+
+
 
 
         </div>

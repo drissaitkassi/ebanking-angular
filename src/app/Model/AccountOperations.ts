@@ -22,4 +22,5 @@ export interface AccountOperation {
   amount: number
   operationType: string
   description: string
+  destinationAccountId: string
 }
