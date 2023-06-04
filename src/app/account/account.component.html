@@ -91,23 +91,29 @@
           </div>
 <!--      formulaire de versement-->
 
-
-      <div [formGroup]="versementForm" *ngIf="selectedForm === 'versementForm'">
-        <form class="d-flex justify-content-evenly">
-          <div class="form-group ">
-            <label class="mb-2 mt-4">
+        {{versementForm.value | json}}
+        <form class="d-flex justify-content-evenly" [formGroup]="versementForm" *ngIf="selectedForm === 'versementForm'" (submit)="handelVersment()">
+          <div class="form-group  d-flex mt-2">
+            <label >
               Montant Versement
             </label>
-            <input type="text" class="form-control" formControlName ="mntVersement" placeholder="Entez votre Montant ">
+            <input type="text" class="form-control" formControlName ="amount" placeholder="Entez votre Montant ">
+            <input type="text" class="form-control" formControlName ="description" placeholder="Entez votre description ">
+            <input type="text" class="form-control" formControlName="accountId"  hidden >
+
+            <button class="btn btn-success" type="submit">Save</button>
+
           </div>
-          <div class="form-group">
-            <label class="mb-2 mt-4">
-              Numéro de Compte
-            </label>
-            <input type="text" class="form-control" formControlName="numCompte" placeholder="Entez votre Compte ">
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label class="mb-2 mt-4">-->
+<!--              Numéro de Compte-->
+<!--            </label>-->
+<!--            <input type="text" class="form-control" formControlName="numCompte" value="{{accountDetails.accId}}" hidden>-->
+
+<!--          </div>-->
+
         </form>
-      </div>
+
 
 
 

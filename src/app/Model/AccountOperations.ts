@@ -15,3 +15,11 @@ export interface AccountOperationDtolist {
   operationType: string
   description: string
 }
+
+export interface AccountOperation {
+  accountId: string
+  operationDate: string
+  amount: number
+  operationType: string
+  description: string
+}
