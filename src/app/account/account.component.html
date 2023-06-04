@@ -38,6 +38,7 @@
                 <th>DATE</th>
                 <th>AMOUNT</th>
                 <th>DESCRIPTION</th>
+                <th>TYPE</th>
               </thead>
               <tbody>
                   <tr *ngFor="let op of accountOperationDTOList">
@@ -45,6 +46,7 @@
                     <td>{{op.operationDate | date:"dd-mm-yy"}}</td>
                     <td>{{op.amount | number : "1.2-2"}}</td>
                     <td>{{op.description}}</td>
+                    <td>{{op.operationType}}</td>
                   </tr>
               </tbody>
             </table>
